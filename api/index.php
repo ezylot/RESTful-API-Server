@@ -9,6 +9,9 @@
     exit;
   }
 
+  if(!\classes\key::check($_REQUEST['key']))
+    die(json_encode(array("status" => "Failure", "data" => "You must use a valid API Key")));
+
   $request  = explode('/', rtrim($_REQUEST['request'], '/'));
   $model = array_shift($request);
 
