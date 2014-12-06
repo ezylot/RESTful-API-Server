@@ -1,4 +1,5 @@
 <?php
+  session_start();
   if(file_exists('../vendor/autoload.php')){
     require '../vendor/autoload.php';
   } else {
@@ -8,11 +9,13 @@
     exit;
   }
 
-  $model  = explode('/', rtrim($_REQUEST['request'], '/'))[0];
+  $request  = explode('/', rtrim($_REQUEST['request'], '/'));
+  $model = array_shift($request);
 
   try {
     if(!empty($model)) {
-      $obj = new $model();
+      $model = "\\model\\". $model;
+      $obj = new $model($request);
       echo $obj->processAPI();
     }
   } catch (Exception $ex) {

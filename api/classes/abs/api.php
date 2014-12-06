@@ -30,16 +30,16 @@ abstract class API
   */
 
   protected $func;
-  public function __construct($function, $params) {
+  public function __construct($request) {
     header("Access-Control-Allow-Orgin: *");
     header("Access-Control-Allow-Methods: *");
     header("Content-Type: application/json");
-
+    $function = array_shift($request);
     if(!empty($function))
       $this->func = $function;
     else
       $this->func = "index";
-    $this->args = $params;
+    $this->args = $request;
     $this->method = $_SERVER['REQUEST_METHOD'];
     if ($this->method == 'POST' && array_key_exists('HTTP_X_HTTP_METHOD', $_SERVER)) {
       if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'DELETE') {
@@ -72,12 +72,12 @@ abstract class API
     if ((int)method_exists($this, $this->func) > 0) {
       return $this->_response($this->{$this->func}($this->args));
     }
-    return $this->_response("Function not found: $this->func", 404);
+    return $this->_response($this->index($this->args));
   }
 
   private function _response($data, $status = 200) {
     header("HTTP/1.1 " . $status . " " . $this->_requestStatus($status));
-    return json_encode($data);
+    return json_encode(array("status" => "Executed", "data" => $data));
   }
 
   private function _cleanInputs($data) {
