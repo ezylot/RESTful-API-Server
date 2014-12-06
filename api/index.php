@@ -17,6 +17,8 @@
       $model = "\\model\\". $model;
       $obj = new $model($request);
       echo $obj->processAPI();
+    } else {
+      echo json_encode(array("status" => "Failure", "data" => "No model specified."));
     }
   } catch (Exception $ex) {
     echo json_encode(Array('error' => $ex->getMessage()));
