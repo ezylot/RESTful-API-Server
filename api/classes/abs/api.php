@@ -31,9 +31,6 @@ abstract class API
 
   protected $func;
   public function __construct($request) {
-    header("Access-Control-Allow-Orgin: *");
-    header("Access-Control-Allow-Methods: *");
-    header("Content-Type: application/json");
     $function = (isset($request[0])) ? $request[0] : "";
     if(!empty($function) && (int)method_exists($this, $function) > 0)
       $this->func = array_shift($request);

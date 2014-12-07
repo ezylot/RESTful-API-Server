@@ -5,4 +5,7 @@
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
+  <php>
+    <server name='REQUEST_METHOD' value='GET' />
+  </php>
 </phpunit>

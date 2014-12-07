@@ -6,9 +6,9 @@ class apikey extends \classes\abs\api {
     parent::__construct($request);
   }
 
-  protected function index() {
+  public function index() {
     if($this->method != 'GET')
-      return "You can only {GET} from this model";    
+      return "You can only {GET} from this model";
     return uniqid(mt_rand(10000, 99999), false);
   }
 

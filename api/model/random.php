@@ -6,7 +6,7 @@
       parent::__construct($request);
     }
 
-    protected function index($options = array()) {
+    public function index($options = array()) {
       if($this->method != 'GET')
         return "You can only {GET} from this model";
       if(sizeof($options) == 0)
