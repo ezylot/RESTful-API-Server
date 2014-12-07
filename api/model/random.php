@@ -7,6 +7,8 @@
     }
 
     protected function index($options = array()) {
+      if($this->method != 'GET')
+        return "You can only {GET} from this model";
       if(sizeof($options) == 0)
         $options = array(0, 9999);
       else if(sizeof($options) == 1) {
