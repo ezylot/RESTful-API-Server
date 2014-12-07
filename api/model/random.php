@@ -6,14 +6,14 @@
       parent::__construct($request);
     }
 
-    protected function index($options = array(0, 999)) {
-      if(sizeof($options) == 2) {
-        if(!is_numeric($options[0]) || !is_numeric($options[1]))
-          return "Parameters must be numeric";
-        return rand($options[0], $options[1]);
-
-      } else
-        return rand();
+    protected function index($options = array()) {
+      if(sizeof($options) == 1)
+        return "If you want to pass parameters you have to explicitly write the method name (/random/index/<min>/<max>)";
+      else if(sizeof($options) == 0)
+        $options = array(0, 9999);  
+      if(!is_numeric($options[0]) || !is_numeric($options[1]))
+        return "Parameters must be numeric";
+      return rand($options[0], $options[1]);
     }
 
   }

@@ -22,11 +22,8 @@
   if(!isset($_REQUEST['key']) || !\classes\key::check($_REQUEST['key'], $settings->getPDO()))
     die(json_encode(array("status" => "Failure", "data" => "You must use a valid API Key")));
 
-
-
   $request  = explode('/', rtrim($_REQUEST['request'], '/'));
   $model = array_shift($request);
-
   try {
     if(!empty($model)) {
       $model = "\\model\\". $model;
