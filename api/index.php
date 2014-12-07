@@ -17,9 +17,11 @@
     exit;
   }
 
-  if(!isset($_REQUEST['key']) || !\classes\key::check($_REQUEST['key']))
-    die(json_encode(array("status" => "Failure", "data" => "You must use a valid API Key")));
   $settings =  new settings();
+
+  if(!isset($_REQUEST['key']) || !\classes\key::check($_REQUEST['key'], $settings->getPDO()))
+    die(json_encode(array("status" => "Failure", "data" => "You must use a valid API Key")));
+
 
 
   $request  = explode('/', rtrim($_REQUEST['request'], '/'));
