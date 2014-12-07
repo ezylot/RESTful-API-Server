@@ -1,5 +1,6 @@
 <?php
   session_start();
+
   if(file_exists('../vendor/autoload.php')){
     require '../vendor/autoload.php';
   } else {
@@ -9,8 +10,17 @@
     exit;
   }
 
-  if(!\classes\key::check($_REQUEST['key']))
+  if(file_exists('../settings.php')){
+    require '../settings.php';
+  } else {
+    echo "Could not find the setting file!";
+    exit;
+  }
+
+  if(!isset($_REQUEST['key']) || !\classes\key::check($_REQUEST['key']))
     die(json_encode(array("status" => "Failure", "data" => "You must use a valid API Key")));
+  $settings =  new settings();
+
 
   $request  = explode('/', rtrim($_REQUEST['request'], '/'));
   $model = array_shift($request);
