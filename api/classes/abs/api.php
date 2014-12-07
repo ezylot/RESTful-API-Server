@@ -34,9 +34,9 @@ abstract class API
     header("Access-Control-Allow-Orgin: *");
     header("Access-Control-Allow-Methods: *");
     header("Content-Type: application/json");
-    $function = array_shift($request);
-    if(!empty($function))
-      $this->func = $function;
+    $function = (isset($request[0])) ? $request[0] : "";
+    if(!empty($function) && (int)method_exists($this, $function) > 0)
+      $this->func = array_shift($request);
     else
       $this->func = "index";
     $this->args = $request;
@@ -69,10 +69,7 @@ abstract class API
     }
   }
   public function processAPI() {
-    if ((int)method_exists($this, $this->func) > 0) {
       return $this->_response($this->{$this->func}($this->args));
-    }
-    return $this->_response($this->index($this->args));
   }
 
   private function _response($data, $status = 200) {
