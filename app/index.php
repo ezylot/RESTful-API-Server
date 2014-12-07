@@ -5,6 +5,9 @@
 <html>
   <head>
     <style>
+      body {
+        font-family:"Arial Black",Arial,sans-serif;
+      }
       ul {
         margin: 0;
         padding: 0;
