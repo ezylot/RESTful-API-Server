@@ -33,15 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+
   <title>Geschützter Bereich</title>
 </head>
 <body>
   <div class="container">
     <form action="login.php" method="post">
-    <div class="table-responsive">
-      <table class="table table-hover">
+    <div class="table-responsive table-condensed">
+      <table class="table table">
         <thead>
           <tr>
             <th></th>

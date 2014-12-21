@@ -9,6 +9,7 @@
     protected $pdo = null;
 
     public function __construct() {
+      header('Content-Type: text/html; charset=utf-8');
       try {
         $this->pdo = new PDO($this->dsn, $this->username, $this->password, $this->options);
       } catch (Exception $ex) {
