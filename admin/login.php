@@ -40,14 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
   <div class="container">
+    <div class="page-header">
+      <h1>Adminbereich <small>Login</small></h1>
+    </div>
     <form action="login.php" method="post">
     <div class="table-responsive table-condensed">
       <table class="table table">
         <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
         </thead>
         <tbody>
           <tr>
@@ -61,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </tbody>
       </table>
     </div>
-      <input type="submit" value="Anmelden" />
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </body>
