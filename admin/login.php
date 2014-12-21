@@ -29,16 +29,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<!DOCTYPE html>
+<html lang="de">
 <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <title>Geschützter Bereich</title>
 </head>
 <body>
-  <form action="login.php" method="post">
-    Username: <input type="text" name="username" /><br />
-    Passwort: <input type="password" name="passwort" /><br />
-    <input type="submit" value="Anmelden" />
-  </form>
+  <div class="container">
+    <form action="login.php" method="post">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" /></td>
+          </tr>
+          <tr>
+            <td>Passwort</td>
+            <td><input type="text" name="passwort" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <input type="submit" value="Anmelden" />
+    </form>
+  </div>
 </body>
 </html>
