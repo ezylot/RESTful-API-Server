@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
   session_start();
 
   $username = $_POST['username'];
@@ -17,14 +18,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   $settings =  new settings();
   $stmt = $settings->getPDO()->prepare("SELECT * FROM users WHERE username = ?");
-  if($stmt->execute(array($username))){
-    $result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if(password_verify($passwort, $result_assoc['password'])){
-      $_SESSION['angemeldet'] = true;
+  $ret = "";
+
+  if($stmt->execute(array($username))) {
+    $result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($result_assoc != false) {
+      if(password_verify($passwort, $result_assoc['password'])) {
+        $_SESSION['angemeldet'] = true;
+        $ret = "success";
+      } else {
+        $ret = "wrongCombination";
+      }
+    } else {
+      $ret = "wrongCombination";
     }
+  } else {
+    $ret = "wrongCombination";
   }
-  header('Location: index.php');
+  header('Location: index.php?status='.$ret);
   exit;
 }
 
@@ -55,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </tr>
           <tr>
             <td>Passwort</td>
-            <td><input type="text" name="passwort" /></td>
+            <td><input type="password" name="passwort" /></td>
           </tr>
         </tbody>
       </table>
