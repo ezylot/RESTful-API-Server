@@ -31,32 +31,76 @@ abstract class API
 
   protected $func;
   public function __construct($request) {
-    $function = (isset($request[0])) ? $request[0] : "";
-    if(!empty($function) && (int)method_exists($this, $function) > 0)
-      $this->func = array_shift($request);
-    else
-      $this->func = "index";
-    $this->args = $request;
     $this->method = $_SERVER['REQUEST_METHOD'];
     if ($this->method == 'POST' && array_key_exists('HTTP_X_HTTP_METHOD', $_SERVER)) {
       if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'DELETE') {
         $this->method = 'DELETE';
       } else if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'PUT') {
         $this->method = 'PUT';
+      } else if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'PATCH') {
+        $this->method = 'PATCH';
       } else {
         throw new Exception("Unexpected Header");
       }
     }
 
+    $function = (isset($request[0])) ? $request[0] : "";
+
+    if(!empty($function) && (int)method_exists($this, $function) > 0)
+      $this->func = array_shift($request);
+    else
+      switch($this->method) {
+        case 'DELETE':
+          if((int)method_exists($this, 'delete') > 0)
+            $this->func = 'delete';
+          else
+            $this->func = 'index';
+        break;
+        case 'POST':
+          if((int)method_exists($this, 'post') > 0)
+            $this->func = 'post';
+          else
+            $this->func = 'index';
+        break;
+        case 'GET':
+          if((int)method_exists($this, 'get') > 0)
+            $this->func = 'get';
+          else
+            $this->func = 'index';
+        break;
+        case 'PUT':
+          if((int)method_exists($this, 'put') > 0)
+            $this->func = 'put';
+          else
+            $this->func = 'index';
+        break;
+        case 'PATCH':
+          if((int)method_exists($this, 'patch') > 0)
+            $this->func = 'patch';
+          else
+            $this->func = 'index';
+        break;
+        default:
+        $this->_response('Function', 400);
+        break;
+      }
+
+    $this->args = $request;
+
     switch($this->method) {
       case 'DELETE':
       case 'POST':
-      $this->request = $this->_cleanInputs($_POST);
+        $this->request = $this->_cleanInputs($_POST);
+        $this->file = file_get_contents("php://input");
       break;
       case 'GET':
       $this->request = $this->_cleanInputs($_GET);
       break;
       case 'PUT':
+      $this->request = $this->_cleanInputs($_GET);
+      $this->file = file_get_contents("php://input");
+      break;
+      case 'PATCH':
       $this->request = $this->_cleanInputs($_GET);
       $this->file = file_get_contents("php://input");
       break;
@@ -71,6 +115,11 @@ abstract class API
 
   private function _response($data, $status = 200) {
     header("HTTP/1.1 " . $status . " " . $this->_requestStatus($status));
+    if(isset($data['id'])){
+      $id = $data['id'];
+      unset($data['id']);
+      return json_encode(array('id' => $id, "status" => "Executed", "data" => array_shift($data)));
+    }
     return json_encode(array("status" => "Executed", "data" => $data));
   }
 
