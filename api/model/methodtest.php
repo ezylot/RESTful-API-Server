@@ -7,8 +7,7 @@ class methodtest extends \classes\abs\api {
   }
 
   public function index() {
-    var_dump($_REQUEST);
-    return "index";
+
   }
 
   public function patch($opts) { //model.save({data: bla}, {patch: true})
