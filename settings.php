@@ -21,9 +21,3 @@
       return $this->pdo;
     }
 }
-?> Just change soe data to test the file reversion
-alökndsöihfnoasf
-oaiwjda
-apoa
-
-adpokadpj
