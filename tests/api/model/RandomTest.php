@@ -8,4 +8,3 @@ class randomTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(2, $w->index(array(2,1)));
   }
 }
-?>

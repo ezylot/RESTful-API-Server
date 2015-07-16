@@ -13,5 +13,3 @@ class apikey extends \classes\abs\api {
   }
 
 }
-
-?>

@@ -39,4 +39,3 @@
   } catch (Exception $ex) {
     echo json_encode(Array('error' => $ex->getMessage()));
   }
-?>

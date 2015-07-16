@@ -31,5 +31,3 @@ class methodtest extends \classes\abs\api {
 
 
 }
-
-?>

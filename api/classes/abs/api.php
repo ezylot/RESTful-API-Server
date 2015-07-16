@@ -146,4 +146,3 @@ abstract class API
   }
 }
 
-?>
