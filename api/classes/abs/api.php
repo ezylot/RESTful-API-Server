@@ -77,19 +77,19 @@ abstract class API
                 break;
                 case 'POST':
                     if((int)method_exists($this, 'post') > 0)
-                        $this->func = 'create';
+                        $this->func = 'post';
                     else
                         $this->func = 'index';
                 break;
                 case 'GET':
                     if((int)method_exists($this, 'get') > 0)
-                        $this->func = 'read';
+                        $this->func = 'get';
                     else
                         $this->func = 'index';
                 break;
                 case 'PUT':
                     if((int)method_exists($this, 'put') > 0)
-                        $this->func = 'update';
+                        $this->func = 'put';
                     else
                         $this->func = 'index';
                 break;
