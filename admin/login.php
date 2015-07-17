@@ -5,12 +5,9 @@ if(file_exists('../settings.php')){
 } else {
   echo "Could not find the setting file!";
   exit;
-}
-  
+}; 
 $settings =  new settings();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
   session_start();
 
   $username = $_POST['username'];
@@ -19,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $hostname = $_SERVER['HTTP_HOST'];
   $path = dirname($_SERVER['PHP_SELF']);
 
+
   $stmt = $settings->getPDO()->prepare("SELECT * FROM users WHERE username = ?");
-
   $ret = "";
-
   if($stmt->execute(array($username))) {
+
     $result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
     if($result_assoc != false) {
-      if(password_verify($passwort, $result_assoc['password'])) {
+      if(sha1($passwort) == $result_assoc['password']) {
         $_SESSION['angemeldet'] = true;
         $ret = "success";
       } else {
@@ -43,16 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
 } else {
   $stmt = $settings->getPDO()->prepare("SELECT * FROM users");
-  if($stmt->execute(array($username))) {
-    $result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($result_assoc == false || empty($result_assoc)) {
-      $password = password_hash("123456", PASSWORD_DEFAULT);
-      $stmt = $settings->getPDO()->prepare("ISNERT INTO users SET username='root' AND password='$password'");
-      $stmt->execute();
-    }
-  }
+	if($stmt->execute()) {
+		$result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
+	    if($result_assoc == false || empty($result_assoc)) {
+			$password = sha1("123456");
+			$stmt = $settings->getPDO()->prepare("INSERT INTO users SET username='root', password='$password'");
+			$stmt->execute();
+		}
+	}	
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="de">

@@ -36,6 +36,7 @@
         $settings =  new settings();
         $stmt = $settings->getPDO()->prepare("SELECT * FROM developer;");
         if($stmt->execute()){
+			echo "<h1>Developers</h1>";
           while($result_assoc = $stmt->fetch(PDO::FETCH_ASSOC)) {
             ?>
               <li>
