@@ -1,4 +1,14 @@
 <?php
+
+if(file_exists('../settings.php')){
+  require '../settings.php';
+} else {
+  echo "Could not find the setting file!";
+  exit;
+}
+  
+$settings =  new settings();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   session_start();
@@ -9,14 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $hostname = $_SERVER['HTTP_HOST'];
   $path = dirname($_SERVER['PHP_SELF']);
 
-
-  if(file_exists('../settings.php')){
-    require '../settings.php';
-  } else {
-    echo "Could not find the setting file!";
-    exit;
-  }
-  $settings =  new settings();
   $stmt = $settings->getPDO()->prepare("SELECT * FROM users WHERE username = ?");
 
   $ret = "";
@@ -38,6 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   header('Location: index.php?status='.$ret);
   exit;
+  
+} else {
+  $stmt = $settings->getPDO()->prepare("SELECT * FROM users");
+  if($stmt->execute(array($username))) {
+    $result_assoc = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($result_assoc == false || empty($result_assoc)) {
+      $password = password_hash("123456", PASSWORD_DEFAULT);
+      $stmt = $settings->getPDO()->prepare("ISNERT INTO users SET username='root' AND password='$password'");
+      $stmt->execute();
+    }
+  }
 }
 
 ?>
