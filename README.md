@@ -1,5 +1,5 @@
 # snippget
-[![Code Climate](https://codeclimate.com/github/ezylot/RESTful-API-Server/badges/gpa.svg)](https://codeclimate.com/github/ezylot/RESTful-API-Server) [![Build Status](https://travis-ci.org/ezylot/RESTful-API-Server.svg?branch=master)](https://travis-ci.org/ezylot/RESTful-API-Server)
+[![Code Climate](https://codeclimate.com/github/ezylot/RESTful-API-Server/badges/gpa.svg)](https://codeclimate.com/github/ezylot/RESTful-API-Server) [![Build Status](https://travis-ci.org/ezylot/snippget.svg?branch=master)](https://travis-ci.org/ezylot/snippget)
 
 
 When using nginx configure the location to something like that (i use the subdirectory "snippets"):
