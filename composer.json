@@ -1,8 +1,12 @@
 {
-    "name": "RESTful-API-Server",
+    "name": "snippget",
     "require": {
         "php": ">=5.3.0",
         "mustache/mustache": "~2.5"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "2.*",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-4": {
