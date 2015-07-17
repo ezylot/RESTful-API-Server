@@ -29,7 +29,7 @@
 
     // Splits the url that is after key
     $request  = explode('/', rtrim($_REQUEST['request'], '/'));
-    if(empty($request)) {
+    if(isset($request[0]) && empty($request[0])) {
         echo json_encode(array("status" => "Failure", "data" => "No model specified."));
     } else {
         $model = "\\model\\" . array_shift($request); // Array_shift removes the first element and returns it
