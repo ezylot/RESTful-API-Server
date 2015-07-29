@@ -4,5 +4,4 @@ app/core/config.php
 settings.php
 snippget.iml
 .idea
-composer.lock
 vendor/
