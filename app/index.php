@@ -77,13 +77,23 @@
 				<div class="summary">
 					<h3>First Snippet<span class="pull-right glyphicon glyphicon-edit"></span></h3>
 				</div>
-
-				<div class="snippet-nav">
-					<a href=""><span class="glyphicon glyphicon-tag"></span><span>FirstSnippet</span></a>
-					<a href=""><span class="glyphicon glyphicon-tag"></span><span>SecondSnippet</span></a>
-					<a href=""><span class="glyphicon glyphicon-tag"></span><span>ThirdSnippet</span></a>
-					<a href=""><span class="glyphicon glyphicon-tag"></span><span>FourthSnippet</span></a>
-				</div>				
+				
+				<div class="tab-content">
+					<div role="tabpanel" id="mySnippets" class="snippet-nav  active tab-pane fade in">
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>FirstSnippet</span></a>
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>SecondSnippet</span></a>
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>ThirdSnippet</span></a>
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>FourthSnippet</span></a>
+					</div>				
+					<div role="tabpanel" id="popular" class="snippet-nav tab-pane fade">
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>Popular 1</span></a>
+						<a href=""><span class="glyphicon glyphicon-tag"></span><span>Populat 2</span></a>
+					</div>				
+				</div>
+				<ul id="tablist" class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#mySnippets" aria-controls="mySnippets" role="tab" data-toggle="tab">My Snippets</a></li>
+					<li role="presentation" class=""><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab">Popular Snippets</a></li>
+				</ul>
 			</aside>
 		</div>
 	</div>

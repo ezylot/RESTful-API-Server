@@ -32,13 +32,32 @@ aside .summary {
 	padding: 0px 10px;
 }
 
+/* -----------------------------Tabs for switching -----------------*/
+aside .nav-tabs>li {
+	width: 50%;
+}
 
-/*---------------------------- Snippet Navigation Right Side --------*/
+aside .nav-tabs>li>a {
+	border-radius: 0 0 4px 4px !important;
+	border-top: 2px solid #ccc !important;
+	margin: 0px;
+}
+
+aside .nav-tabs>li.active>a,
+aside .nav-tabs>li.active>a:hover,
+aside .nav-tabs>li.active>a:focus {
+	border: 2px solid #ccc !important;
+	border-bottom-color: #ddd !important;
+	border-top-color: transparent !important;
+
+}
+
+/*---------------------------- MySnippet Navigation Right Side ------*/
 aside {
 	padding: 0px 0px !important;	
 }
 
-aside > .snippet-nav {
+aside .snippet-nav {
 	padding: 0;
 	
 	display: flex;
@@ -46,13 +65,13 @@ aside > .snippet-nav {
 			
 }
 
-aside > .snippet-nav  a {
-	display: box;	
-	border-bottom: 1px solid #ddd;
+aside .snippet-nav  a {
+	display: block;	
+	border-top: 1px solid #ddd;
 	padding: 0.6em 0px;
 } 
 
-aside > .snippet-nav a .glyphicon {
+aside .snippet-nav a .glyphicon {
 	padding: 0px 10px;
 } 
 
