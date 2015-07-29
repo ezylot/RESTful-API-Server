@@ -1,19 +1,75 @@
+body {
+	font-family: 'Ubuntu', serif;
+
+}
+/* -------------------------- Navigation Top ------------------------*/
+nav {
+	margin-bottom: 40px;
+}
+nav .site-title {
+	font-weight: 700;
+	font-size: 200%;
+	color: #F48650 !important;
+}
+
+nav input[type="text"], nav input[type="password"] {
+	background-color: #eeeeee;	
+
+}
+nav input[type="text"]:focus, nav input[type="password"]:focus {
+	background-color: #ffffff;	
+
+}
+/* -------------------------- Wrapper between Header and Footer -----*/
+#wrapper {
+	margin: 30px;
+
+}
+
+/*-------------------------- Infoarea for Snippet Right Side ------ */
+aside .summary {
+	border-bottom: 1px solid #aaa;
+	padding: 0px 10px;
+}
+
+
+/*---------------------------- Snippet Navigation Right Side --------*/
+aside {
+	padding: 0px 0px !important;	
+}
+
+aside > .snippet-nav {
+	padding: 0;
+	
+	display: flex;
+	flex-direction: column;
+			
+}
+
+aside > .snippet-nav  a {
+	display: box;	
+	border-bottom: 1px solid #ddd;
+	padding: 0.6em 0px;
+} 
+
+aside > .snippet-nav a .glyphicon {
+	padding: 0px 10px;
+} 
+
+/* -------------------------. Footer Bottom -------------------------*/
 footer {
 	position: fixed;
 	bottom: 0;
-	background-color: grey;
+
+	color: #bbb;
+	background-color: #2f2f2f;
 
 	width: 100%;
-	height: 2em;
+	height: 3em;
 
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 	align-content: center;
-}
-
-aside {
-
-
 }

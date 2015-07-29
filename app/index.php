@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu">
 
     <script src="scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   </head>
@@ -48,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">sippget.ga</a>
+          <a class="navbar-brand site-title" href="#">snippget.ga</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
@@ -68,25 +69,23 @@
 
 	<div id="wrapper" class="container-fluid">
 		<div class="row">
-			<section class="col-md-8">
+			<section class="col-md-9">
 				<img style="width: 100%" src="http://www.miratelinc.com/wp-content/uploads/2013/12/page-under-construction.jpg" alt="This site is currently under construction" />
 
 			</section>
-			<aside class="col-md-4">
-				<div class="snippet-nav">
-					<ul>
-						<li><a href="">FirstSnippet</a></li>
-						<li><a href="">SecondSnippet</a></li>
-						<li><a href="">ThirdSnippet</a></li>
-						<li><a href="">FourthSnippet</a></li>
-					</ul>
-				</div>				
-
+			<aside class="col-md-3 panel panel-default">
 				<div class="summary">
-					<h3>First Snippet <span class="glyphicon glyphicon-edit"></span></h3>
+					<h3>First Snippet<span class="pull-right glyphicon glyphicon-edit"></span></h3>
 				</div>
+
+				<div class="snippet-nav">
+					<a href=""><span class="glyphicon glyphicon-tag"></span><span>FirstSnippet</span></a>
+					<a href=""><span class="glyphicon glyphicon-tag"></span><span>SecondSnippet</span></a>
+					<a href=""><span class="glyphicon glyphicon-tag"></span><span>ThirdSnippet</span></a>
+					<a href=""><span class="glyphicon glyphicon-tag"></span><span>FourthSnippet</span></a>
+				</div>				
 			</aside>
-		<div>
+		</div>
 	</div>
 
 	<footer>
